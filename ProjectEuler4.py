@@ -1,41 +1,34 @@
 import sys
+import math
 
+def isPalendrome(number):
 
-def isPrime(number):
-	if number <= 3:
-		return True;
+	stringNumber = str(number);	
+	if(stringNumber.__len__() == 1):
+		return False;
 
-	for x in range(2,number-1):
-		if number%x == 0:
-			return False;
+	nDigitsToCheck = int(math.floor(stringNumber.__len__() / 2));
+	
+	for x in range(0,nDigitsToCheck):
+		if stringNumber[x] != stringNumber[stringNumber.__len__() - (x+1)]:
+			return False
+
 	return True;
 
 
-def getAPrimeFactor(number):
-	x = 1
-	while (x < number):
-		x+=1;
-		if isPrime(x):
-			if number%x == 0:
-				return x
-	return number
-
 
 if __name__ == '__main__':
+	nLargest = 0;
+	nCurrentNumberToTest = 999;
 	
-	nCurrentValue = 600851475143 
+	for x in reversed(range(1, nCurrentNumberToTest)):
+		for i in reversed(range(1, nCurrentNumberToTest)):
+			if(isPalendrome(x*i)):
+				if(nLargest < (x*i)):
+					nLargest = x*i;
 
-	nLargestPrime = 0;
-	while(True):
-		nPrimeFactor = getAPrimeFactor(nCurrentValue);
-		
-		
-		if(nPrimeFactor > nLargestPrime):
-			nLargestPrime = nPrimeFactor
-		if(nPrimeFactor == nCurrentValue):
-			break;
-		nCurrentValue = nCurrentValue/nPrimeFactor;
-		
-	print  nLargestPrime
+	print nLargest
+				
+
 
 	
