@@ -4,19 +4,18 @@ import jeffutils
 import math
 
 if __name__ == '__main__':
-	primeArray = [2,3];
+	primeArray = [2,3,5];
 	nCurrentNum = 3;
 	nCurrentPrime = 1;
 	while(True):
 		nCurrentNum+=2;
-		#print jeffutils.isPrime(nCurrentNum,primeArray)
-		if jeffutils.isPrime(nCurrentNum,primeArray):			
-			primeArray.append(nCurrentNum);	
+		if jeffutils.isPrime(nCurrentNum):
 			nCurrentPrime = primeArray.__len__();
+			primeArray.append(nCurrentNum);
 			print str(nCurrentNum) + ':' + str(nCurrentPrime)
 			if nCurrentPrime == 10001:
 				print "~~~~~~~~"
-				print nCurrentPrime
+				print nCurrentNum
 				break;
 
 		
